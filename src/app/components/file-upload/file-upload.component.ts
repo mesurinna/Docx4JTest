@@ -43,7 +43,6 @@ export class FileUploadComponent implements OnInit {
               this.message = event.body.message;
               this.fileInfos = this.uploadService.getFiles();
             }
-            this.fileInfos = this.uploadService.getFiles();
           },
           error: (err: any) => {
             console.log(err);
