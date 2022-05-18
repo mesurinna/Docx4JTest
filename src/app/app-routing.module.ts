@@ -6,7 +6,8 @@ import { HomeComponent } from './dialogs/home/home.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'fillForm', component: FillFormComponent }
+  { path: 'fillForm/:fileName', component: FillFormComponent },
+  { path: '**', component: HomeComponent }
 ];
 
 @NgModule({

@@ -38,11 +38,12 @@ public class FileResourceApi {
 	 */
 
 	@GetMapping("/files")
-	public ResponseEntity<List<FileInfo>> getListFiles() {
+	public ResponseEntity<List<FileInfo>> getListFiles() {	
 		List<FileInfo> fileInfos = storageService.loadAll().map(path -> {
 			String filename = path.getFileName().toString();
 			String url = MvcUriComponentsBuilder
 					.fromMethodName(FileResourceApi.class, "getFile", path.getFileName().toString()).build().toString();
+		
 			return new FileInfo(filename, url);
 		}).collect(Collectors.toList());
 		return ResponseEntity.status(HttpStatus.OK).body(fileInfos);

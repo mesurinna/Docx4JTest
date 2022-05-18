@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FileUploadService } from '../../services/file-upload.service';
+import {  Router } from '@angular/router';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class FileUploadComponent implements OnInit {
 
   title = 'Angular 13 File Upload';
   
-  constructor(private uploadService: FileUploadService) { }
+  constructor(private uploadService: FileUploadService,
+        private router:Router) { }
 
   ngOnInit(): void {
     this.fileInfos = this.uploadService.getFiles();
@@ -27,6 +29,10 @@ export class FileUploadComponent implements OnInit {
   
   selectFile(event: any): void {
     this.selectedFiles = event.target.files;
+  }
+
+  btnFillDocxClick(fileName: string): void{
+    this.router.navigateByUrl('/fillForm/'+ fileName);
   }
 
   upload(): void {
